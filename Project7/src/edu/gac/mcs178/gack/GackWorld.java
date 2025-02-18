@@ -45,12 +45,16 @@ public class GackWorld extends World {
 		offices.addNewNeighbor("north", lounge);
 		
 		dormitory.addNewNeighbor("north west", lund); // new neighbor for dorm, in northwest dormitory is lund
-		
+		lund.addNewNeighbor("south east", dormitory); // added the other way
 		
 		new AutoPerson("Max", offices, 2);
 		new AutoPerson("Karl", computerLab, 4);
 		new Witch("Barbara", offices, 3, pond);
 		new Wizard("Elvee", offices, 1, chamberOfWizards);
+		
+		
+		new Witch("Jacob", lund, 3, pond); // adding new witch
+		
 		
 		lounge.gain(new Thing("Karl's glasses"));
 		alumniHall.gain(new Thing("Chocolate")); // gain chocolate in alumni hall
@@ -66,6 +70,9 @@ public class GackWorld extends World {
 		computerLab.gain(new Scroll("NeXT User's Reference"));
 		
 		dormitory.gain(new Scroll("Late Lab Report"));
+		
+		lund.gain(new Scroll("Louis don't barf magical enchantment")); // new scroll
+		
 		
 		setPlayer(new Person("player", dormitory));
 	}
