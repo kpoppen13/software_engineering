@@ -117,20 +117,24 @@ public class Person {
 		}
 	}
 	
-	
-	public void give(Thing thing) {
-		if (thing.isOwned()) {
-			Person owner = thing.getOwner();
-			thing.setOwner(owner);
-			possessions.remove(thing);
-			say("Here you go " + owner);
-			
+
+	public void give(Thing thing, Person recipient) {
+		// check if i own the thing first
+		if (!equals(thing.getOwner())){
+			Utility.displayMessage(this + " doesn't have " + thing);
 		}
 		else {
-			Utility.displayMessage(this + " doesn't have " + thing);
-			
+			// my inventory loses the thing
+			thing.becomeUnowned();
+			this.possessions.remove(thing);
+			recipient.possessions.add(thing);
+			thing.setOwner(recipient);
+			this.say("Here, have my  " + thing);
 		}
 	}
+	
+	
+	
 	
 	public void BeEaten(Thing thing) {
 		if (!equals(thing.getOwner())) {

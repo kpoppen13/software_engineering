@@ -47,7 +47,9 @@ public class GackWorld extends World {
 		dormitory.addNewNeighbor("north west", lund); // new neighbor for dorm, in northwest dormitory is lund
 		lund.addNewNeighbor("south east", dormitory); // added the other way
 		
-		new AutoPerson("Max", offices, 2);
+		//new AutoPerson("Max", offices, 2);
+		new AutoPerson("Max", dormitory, 2);
+		
 		new AutoPerson("Karl", computerLab, 4);
 		new Witch("Barbara", offices, 3, pond);
 		new Wizard("Elvee", offices, 1, chamberOfWizards);
